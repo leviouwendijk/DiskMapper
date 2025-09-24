@@ -1,0 +1,24 @@
+{
+  "originHash" : "ba28880b3c1c01581e077e0f69bbe8e2de3f469110430dd7b3ed590d380a54bc",
+  "pins" : [
+    {
+      "identity" : "plate",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/leviouwendijk/plate.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "184a36b4859cbea8ffe5cec9526a367127b16250"
+      }
+    },
+    {
+      "identity" : "swift-argument-parser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-argument-parser.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "04695ec5448962bcd5e4616ed184b8a2168751e7"
+      }
+    }
+  ],
+  "version" : 3
+}
