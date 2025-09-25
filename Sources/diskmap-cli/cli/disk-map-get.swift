@@ -21,43 +21,12 @@ struct GetLink: ParsableCommand {
     @Flag(name: .customLong("nc"), help: "Override copying to clipboard.")
     var noCopy: Bool = false
 
+    @Flag(name: .customLong("pr"), help: "Prepends root instead of cwd for argument.")
+    var prependRoot: Bool = false
+
     private var copy: Bool {
         return !noCopy
     }
-
-    // func run() throws {
-    //     // Build diskmap:// URL
-    //     var comp = URLComponents()
-    //     comp.scheme = "diskmap"
-    //     comp.host = (action?.isEmpty == false) ? action : ""   // ← force // when no action
-    //     comp.queryItems = [URLQueryItem(name: "rel", value: rel)]
-    //     if let line {
-    //         comp.queryItems?.append(URLQueryItem(name: "line", value: String(line)))
-    //     }
-    //     guard let u = comp.url else { throw ValidationError("Could not build URL") }
-
-    //     // Existence check (supports absolute, relative, and ~)
-    //     let fm = FileManager.default
-    //     let expanded = (rel as NSString).expandingTildeInPath
-    //     let full: URL
-    //     if (expanded as NSString).isAbsolutePath {
-    //         full = URL(fileURLWithPath: expanded).standardizedFileURL
-    //     } else {
-    //         let base = URL(fileURLWithPath: fm.currentDirectoryPath)
-    //         full = URL(fileURLWithPath: expanded, relativeTo: base).standardizedFileURL
-    //     }
-
-    //     var isDir: ObjCBool = false
-    //     if !fm.fileExists(atPath: full.path, isDirectory: &isDir) {
-    //         FileHandle.standardError.write(Data("warning: path does not exist: \(rel) (resolved: \(full.path))\n".utf8))
-    //     } else {
-    //         if copy {
-    //             u.absoluteString.clipboard()
-    //         }
-    //     }
-
-    //     print(u.absoluteString) // now "diskmap://?rel=…" or "diskmap://finder?rel=…"
-    // }
 
     func run() throws {
         // Load config (for root + rules) and build a handler so we can compute rel
@@ -71,7 +40,8 @@ struct GetLink: ParsableCommand {
             if (expanded as NSString).isAbsolutePath {
                 return URL(fileURLWithPath: expanded).standardizedFileURL
             } else {
-                let base = URL(fileURLWithPath: fm.currentDirectoryPath)
+                let assumedBasePath = prependRoot ? cfg.root : fm.currentDirectoryPath
+                let base = URL(fileURLWithPath: assumedBasePath)
                 return URL(fileURLWithPath: expanded, relativeTo: base).standardizedFileURL
             }
         }()
@@ -94,7 +64,7 @@ struct GetLink: ParsableCommand {
         }
 
         // 5) Copy to clipboard unless --nc
-        if !noCopy { u.absoluteString.clipboard() }
+        if copy { u.absoluteString.clipboard() }
 
         // 6) Always print the link
         print(u.absoluteString)
