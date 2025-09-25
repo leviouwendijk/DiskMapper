@@ -67,7 +67,7 @@ struct GetLink: ParsableCommand {
         if copy { u.absoluteString.clipboard() }
 
         // 6) Always print the link
-        print(u.absoluteString)
+        print(u.absoluteString.osc8())
     }
 
     private func makeDiskmapURL(rel: String, action: String?, line: Int?) -> URL {
