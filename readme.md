@@ -31,6 +31,7 @@ Process a generated url (open):
 ```
 diskmap process --url "diskmap://?rel=shared/test%20space.md"
 ```
+---
 
 ### Manual writing
 
