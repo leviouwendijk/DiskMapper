@@ -7,6 +7,7 @@ DerivedData/
 .swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 .netrc
 
-launch-service.sh
-log-stream.sh
 DiskMapper.app/
+
+utils/launch-service.sh
+utils/log-stream.sh

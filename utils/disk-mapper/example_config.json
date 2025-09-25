@@ -1,0 +1,24 @@
+{
+    "root": "/Users/leviouwendijk/Library/Mobile Documents/com~apple~CloudDocs/Shared Files/Hondenmeesters",
+    "preferred_open_method": "terminal | finder | system_default",
+    "terminal": {
+        "terminal_application": "/Applications/Ghostty.app",
+        "default_action": {
+            "file": {
+                "use_command": "nvim",
+                "arguments": []
+            },
+            "directory": {
+                "use_command": "nvim",
+                "arguments": []
+            }
+        }
+    },
+    "finder": {
+        "default_action": {
+            "file": "view (only views in finder window, even when file) | edit (opens in preferred text editor)",
+            "text_editor": "example: TextEdit | Sublime"
+        }
+    },
+    "safe_restrict_to_root": true
+}
