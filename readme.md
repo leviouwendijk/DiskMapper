@@ -40,9 +40,9 @@ You should be able to handwrite it without hassle.
 
 So, if your path is simple (and you are not in your terminal), you may just want to build it out by hand:
 
-1: `diskmap://`
-2: `?rel=`
-3: `example/test-file.md`
+1: `diskmap://` \
+2: `?rel=` \
+3: `example/test-file.md` \
 
 Note that this is easier if you avoid a lot of nesting, using spaces (`%20`), or capitals.
 
