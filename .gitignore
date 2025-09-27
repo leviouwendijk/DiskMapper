@@ -11,3 +11,8 @@ DiskMapper.app/
 
 utils/launch-service.sh
 utils/log-stream.sh
+
+# auto-added ignorables:
+compiled.pkl
+/compiled.pkl
+**/compiled.pkl
